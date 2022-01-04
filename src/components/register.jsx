@@ -95,7 +95,7 @@ const Register = () => {
                 <input
                   type="text"
                   name="first_name"
-                  class="py-2 border-b-2 text-sm text-white rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
+                  class="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
                   placeholder="Enter your Email Address"
                   autoComplete="on"
                   {...register("first_name", {
@@ -136,7 +136,7 @@ const Register = () => {
                 <input
                   type="text"
                   name="last_name"
-                  className="py-2 border-b-2 text-sm text-white rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
+                  className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
                   placeholder="Enter your Email Address"
                   autoComplete="on"
                   {...register("last_name", {
@@ -177,7 +177,7 @@ const Register = () => {
                 <input
                   type="email"
                   name="email"
-                  className="py-2 border-b-2 text-sm text-white rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
+                  className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
                   placeholder="Enter your Email Address"
                   autoComplete="on"
                   {...register("email", {
@@ -218,7 +218,7 @@ const Register = () => {
                 <input
                   type="password"
                   name="password"
-                  className="py-2 border-b-2 text-sm text-white rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
+                  className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
                   placeholder="Enter your Email Address"
                   autoComplete="on"
                   {...register("password", {
@@ -260,7 +260,7 @@ const Register = () => {
                 <input
                   type="number"
                   name="phone"
-                  className="py-2 border-b-2 text-sm text-white rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
+                  className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
                   placeholder="Enter your Email Address"
                   autoComplete="on"
                   {...register("phone", {

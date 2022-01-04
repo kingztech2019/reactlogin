@@ -105,7 +105,7 @@ const Login = () => {
                 <input
                   type="email"
                   name="email"
-                  className="py-2 border-b-2 text-sm text-white rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
+                  className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
                   placeholder="Enter your Email Address"
                   autoComplete="on"
                   {...register("email", {
@@ -146,7 +146,7 @@ const Login = () => {
                 <input
                   type="password"
                   name="password"
-                  className="py-2 border-b-2 text-sm text-white rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
+                  className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
                   placeholder="Enter your Email Address"
                   autoComplete="on"
                   {...register("password", {
