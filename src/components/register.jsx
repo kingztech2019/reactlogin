@@ -96,7 +96,7 @@ const Register = () => {
                   type="text"
                   name="first_name"
                   class="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
-                  placeholder="Enter your Email Address"
+                  placeholder="Enter your first name"
                   autoComplete="on"
                   {...register("first_name", {
                     required: true,
@@ -137,7 +137,7 @@ const Register = () => {
                   type="text"
                   name="last_name"
                   className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
-                  placeholder="Enter your Email Address"
+                  placeholder="Enter your last name"
                   autoComplete="on"
                   {...register("last_name", {
                     required: true,
@@ -219,7 +219,7 @@ const Register = () => {
                   type="password"
                   name="password"
                   className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
-                  placeholder="Enter your Email Address"
+                  placeholder="Enter your password"
                   autoComplete="on"
                   {...register("password", {
                     required: true,
@@ -261,7 +261,7 @@ const Register = () => {
                   type="number"
                   name="phone"
                   className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
-                  placeholder="Enter your Email Address"
+                  placeholder="Enter your phone number"
                   autoComplete="on"
                   {...register("phone", {
                     required: true,
