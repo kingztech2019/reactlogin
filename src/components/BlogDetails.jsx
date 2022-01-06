@@ -43,24 +43,24 @@ const BlogDetail = () => {
     singleBlog();
   }, []);
   return (
-    <div class="relative">
-      <div class="max-w-3xl mb-10 rounded overflow-hidden flex flex-col mx-auto text-center">
-        <div class="max-w-3xl mx-auto text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
+    <div className="relative">
+      <div className="max-w-3xl mb-10 rounded overflow-hidden flex flex-col mx-auto text-center">
+        <div className="max-w-3xl mx-auto text-xl sm:text-4xl font-semibold inline-block hover:text-indigo-600 transition duration-500 ease-in-out inline-block mb-2">
           The Best Activewear from the Nordstrom Anniversary Sale
         </div>
 
-        <img class="w-full h-96 my-4" src={singlePost?.image} />
-        <p class="text-gray-700 text-base leading-8 max-w-2xl mx-auto">
+        <img className="w-full h-96 my-4" src={singlePost?.image} />
+        <p className="text-gray-700 text-base leading-8 max-w-2xl mx-auto">
           Author: {singlePost?.user?.first_name} {singlePost?.user?.last_name}
         </p>
 
         <hr />
       </div>
 
-      <div class="max-w-3xl mx-auto">
-        <div class="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
-          <div class="">
-            <p class="text-base leading-8 my-5">{singlePost?.desc}</p>
+      <div className="max-w-3xl mx-auto">
+        <div className="mt-3 bg-white rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+          <div className="">
+            <p className="text-base leading-8 my-5">{singlePost?.desc}</p>
           </div>
         </div>
       </div>
