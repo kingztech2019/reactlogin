@@ -49,6 +49,7 @@ const Login = () => {
         setLoading(false);
         setMessage(response?.data?.message);
         openSnackbar(response?.data?.message);
+        localStorage.setItem("user", JSON.stringify(response?.data?.user));
         navigate("/home");
         //console.log(response?.data?.message);
       })

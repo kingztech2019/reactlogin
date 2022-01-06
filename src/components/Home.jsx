@@ -1,109 +1,63 @@
 import React, { useEffect, useState } from "react";
 import "./Home.css";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
+import BlogPost from "./BlogPost";
 const Home = () => {
   const [userData, setUserData] = useState();
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+
   useEffect(() => {
     const User = localStorage.getItem("user");
     const parseUser = JSON.parse(User);
     setUserData(parseUser);
   }, []);
-  const logOut = () => {
-    axios
-      .post(
-        `${process.env.REACT_APP_BACKEND_URL}/api/logout`,
-        {},
-        {
-          withCredentials: true,
-        }
-      )
-      .then(function (response) {
-        // handle success
-        setLoading(false);
-        //   setMessage(response?.data?.message);
-        //   openSnackbar(response?.data?.message);
-        localStorage.removeItem("user");
-        navigate("/login");
-      })
-      .catch(function (error) {
-        // handle error
-        setLoading(false);
-        //   setMessage(error?.response?.data?.message);
-        //   openSnackbar(error?.response?.data?.message);
-        //console.log(error?.response?.data?.message);
-      })
-      .then(function () {
-        // always executed
-      });
-  };
+
   return (
     <>
-      <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <svg
-            className="fill-current h-8 w-8 mr-2"
-            width="54"
-            height="54"
-            viewBox="0 0 54 54"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-          </svg>
-          <span className="font-semibold text-xl tracking-tight">
-            Tailwind CSS
-          </span>
-        </div>
+      <div className="relative h-screen w-full flex items-center justify-center text-center bg-cover bg-center">
+        <div className="absolute top-0 right-0 bottom-0 left-0 bg-gray-900 opacity-75"></div>
 
-        <label
-          className="block lg:hidden cursor-pointer flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white"
-          for="menu-toggle"
-        >
-          <svg
-            className="fill-current h-3 w-3"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-          </svg>
-        </label>
-        <input className="hidden" type="checkbox" id="menu-toggle" />
-
-        <div
-          className="hidden w-full block flex-grow lg:flex lg:items-center lg:w-auto"
-          id="menu"
-        >
-          <div className="text-sm lg:flex-grow">
-            <a
-              href="#responsive-header"
-              className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-            >
-              Docs
-            </a>
-            <a
-              href="#responsive-header"
-              className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
-            >
-              Examples
-            </a>
-            <div
-              onClick={logOut}
-              className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white cursor-pointer"
-            >
-              Log Out
+        <main className="px-4 sm:px-6 lg:px-8 z-10">
+          <div className="text-center">
+            <h2 className="text-4xl tracking-tight leading-10 font-medium sm:text-5xl text-white sm:leading-none md:text-6xl">
+              <span className="text-indigo-600 font-bold">
+                Hi {userData?.first_name} {userData?.last_name},
+              </span>{" "}
+              Welcome to my site!
+            </h2>
+            <p className="mt-3 text-white sm:mt-5 sm:text-md sm:max-w-xl sm:mx-auto md:mt-5">
+              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
+              lorem cupidatat commodo.
+            </p>
+            <div className="mt-5 sm:mt-8 sm:flex justify-center">
+              <div className="rounded-md shadow">
+                <a
+                  href="/create"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-regular rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out md:py-4 md:px-10"
+                >
+                  Create Post
+                </a>
+              </div>
+              <div className="mt-3 sm:mt-0 sm:ml-3">
+                <a
+                  href="#"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base leading-6 font-regular rounded-md text-indigo-700 bg-indigo-100 hover:text-indigo-600 hover:bg-indigo-50 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-300 transition duration-150 ease-in-out md:py-4 md:px-10"
+                >
+                  Live demo
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
-      <div className="pt-10 text-3xl font-medium text-center">
+        </main>
+      </div>
+
+      <BlogPost />
+
+      {/* <div className="pt-10 text-3xl font-medium text-center">
         {loading ? "The System is logging you out" : "Welcome Home"}{" "}
         <span className="font-bold">
           {userData?.first_name} {userData?.last_name}
         </span>
-      </div>
+      </div> */}
     </>
   );
 };
