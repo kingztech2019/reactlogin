@@ -29,7 +29,7 @@ const Register = () => {
       fontSize: "16px",
     },
   };
-  const [openSnackbar, closeSnackbar] = useSnackbar(options);
+  const [openSnackbar] = useSnackbar(options);
   const onSubmit = (data) => {
     setLoading(true);
     const body = {

@@ -3,7 +3,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 const BlogPost = () => {
   const [blogData, setBlogData] = useState();
+  const [loading, setLoading] = useState(false);
   const allBlog = () => {
+    setLoading(true);
     axios
       .get(
         `${process.env.REACT_APP_BACKEND_URL}/api/get-blog`,
@@ -13,19 +15,17 @@ const BlogPost = () => {
         }
       )
       .then(function (response) {
-        //setLoading(false);
+        setLoading(false);
         setBlogData(response?.data?.data);
         console.log(response?.data?.data);
       })
       .catch(function (error) {
+        setLoading(false);
         // handle error
         //setLoading(false);
         //   setMessage(error?.response?.data?.message);
         //   openSnackbar(error?.response?.data?.message);
-        //console.log(error?.response?.data?.message);
-      })
-      .then(function () {
-        // always executed
+        console.log(error);
       });
   };
   useEffect(() => {
@@ -35,6 +35,11 @@ const BlogPost = () => {
     <>
       <div class="container my-12 mx-auto px-4 md:px-12">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
+          {loading && (
+            <div className="text-2xl font-bold text-center px-56 pt-24">
+              <h1>LOADING.....</h1>
+            </div>
+          )}
           {blogData?.map((blog) => (
             <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
               <article class="overflow-hidden rounded-lg shadow-lg">

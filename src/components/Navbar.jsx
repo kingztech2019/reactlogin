@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [loading, setLoading] = useState(false);
+  const [userData, setUserData] = useState();
   const navigate = useNavigate();
   const logOut = () => {
     axios
@@ -32,6 +33,11 @@ const Navbar = () => {
         // always executed
       });
   };
+  useEffect(() => {
+    const User = localStorage.getItem("user");
+    const parseUser = JSON.parse(User);
+    setUserData(parseUser);
+  }, []);
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal-500 p-6">
       <div className="flex items-center flex-shrink-0 text-white mr-6">
@@ -45,7 +51,7 @@ const Navbar = () => {
           <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
         </svg>
         <span className="font-semibold text-xl tracking-tight">
-          Tailwind CSS
+          Golang Blog
         </span>
       </div>
 
@@ -70,22 +76,36 @@ const Navbar = () => {
       >
         <div className="text-sm lg:flex-grow">
           <a
-            href="#responsive-header"
+            href="/home"
             className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
           >
-            Docs
+            Home
           </a>
           <a
-            href="#responsive-header"
+            href="/create"
             className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
           >
-            Examples
+            Create Post
+          </a>
+          {!userData && (
+            <a
+              href="/register"
+              className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+            >
+              Register
+            </a>
+          )}
+          <a
+            href="/personal"
+            className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+          >
+            My Post
           </a>
           <div
             onClick={logOut}
             className="block mt-4 text-base lg:inline-block lg:mt-0 text-teal-200 hover:text-white cursor-pointer"
           >
-            Log Out
+            {userData ? " Log Out" : "Login"}
           </div>
         </div>
       </div>
