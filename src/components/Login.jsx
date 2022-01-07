@@ -50,7 +50,7 @@ const Login = () => {
         setMessage(response?.data?.message);
         openSnackbar(response?.data?.message);
         localStorage.setItem("user", JSON.stringify(response?.data?.user));
-        navigate("/home");
+        navigate("/");
         //console.log(response?.data?.message);
       })
       .catch(function (error) {
