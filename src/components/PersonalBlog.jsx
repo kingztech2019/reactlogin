@@ -101,14 +101,13 @@ const PersonalBlog = () => {
           <h1>You don't have post yet. Kindly create a post </h1>
         </div>
       )}
+      {loading && (
+        <div className="text-2xl font-bold text-center px-56 pt-24">
+          <h1>LOADING.....</h1>
+        </div>
+      )}
       <div class="container my-12 mx-auto px-4 md:px-12">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
-          {loading && (
-            <div className="text-2xl font-bold text-center px-56 pt-24">
-              <h1>LOADING.....</h1>
-            </div>
-          )}
-
           {blogData?.map((blog) => (
             <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
               <article className="overflow-hidden rounded-lg shadow-lg">
