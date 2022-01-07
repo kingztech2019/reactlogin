@@ -10,6 +10,7 @@ const CreateBlog = () => {
   const [imageData, setImageData] = useState();
   const [imageUpload, setImageUpload] = useState();
   const [userData, setUserData] = useState();
+  const [loadingData, setLoadingData] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -25,8 +26,23 @@ const CreateBlog = () => {
       navigate("/login");
     }
   }, []);
+  const options = {
+    position: "bottom-right",
+    style: {
+      backgroundColor: "gray",
+      border: "2px solid lightgreen",
+      color: "white",
+      fontFamily: "Menlo, monospace",
+      fontSize: "20px",
+      textAlign: "center",
+    },
+    closeStyle: {
+      color: "lightcoral",
+      fontSize: "16px",
+    },
+  };
+  const [openSnackbar] = useSnackbar(options);
   const onSubmit = (data) => {
-    console.log(data);
     setLoading(true);
 
     const body = {
@@ -47,18 +63,10 @@ const CreateBlog = () => {
       .then(function (response) {
         // handle success
         setLoading(false);
-        // setMessage(response?.data?.message);
-        // openSnackbar(response?.data?.message);
-        console.log(response);
-
-        // navigate("/login");
+        navigate("/home");
       })
       .catch(function (error) {
-        // handle error
         setLoading(false);
-        // setMessage(error?.response?.data?.message);
-        // openSnackbar(error?.response?.data?.message);
-        console.log(error);
       })
       .then(function () {
         // always executed
@@ -89,7 +97,6 @@ const CreateBlog = () => {
     formData.append("image", imageUpload); //append the values with key, value pair
     //formData.append("name", imageUpload.name);
     formData.append("name", imageUpload.name);
-    console.log(imageUpload.name);
 
     const config = {
       headers: { "content-type": "multipart/form-data" },
@@ -100,61 +107,15 @@ const CreateBlog = () => {
     axios
       .post(url, formData, config)
       .then((response) => {
+        setLoadingData(false);
         setImageData(response?.data?.url);
-        console.log(response?.data);
+        openSnackbar("Image uploaded successfully");
       })
       .catch((error) => {
+        setLoadingData(false);
         console.log(error);
       });
-    return;
-    // setLoading(true);
-    // // const body = {
-    // //   image: image.image,
-    // // };
-    // const data = new FormData();
-    // data.append("image", imageUpload);
-    // data.append("name", imageUpload.name);
-    // console.log("IMAGE", imageUpload);
-    // console.log("THISSs", data);
-    // for (var key of data.entries()) {
-    //   console.log(key[0] + ", " + key[1]);
-    // }
-    // axios
-    //   .post(
-    //     `${process.env.REACT_APP_BACKEND_URL}/api/upload-image`,
-    //     {
-    //       ,
-    //     },
-    //     {
-    //       withCredentials: true,
-    //       headers: {
-    //         "content-type": "multipart/form-data",
-    //       },
-    //     }
-    //   )
-    //   .then(function (response) {
-    //     // handle success
-    //     setLoading(false);
-    //     // setMessage(response?.data?.message);
-    //     // openSnackbar(response?.data?.message);
-    //     console.log(response);
-
-    //     // navigate("/login");
-    //   })
-    //   .catch(function (error) {
-    //     // handle error
-    //     setLoading(false);
-    //     // setMessage(error?.response?.data?.message);
-    //     // openSnackbar(error?.response?.data?.message);
-    //     console.log(error);
-    //   })
-    //   .then(function () {
-    //     // always executed
-    //   });
   };
-
-  console.log(image);
-
   return (
     <>
       <div className="max-w-screen-md mx-auto p-5">
@@ -244,7 +205,7 @@ const CreateBlog = () => {
                 // type="submit"
                 onClick={uploadImage}
               >
-                upload image
+                {loading ? "Loading..." : " upload image"}
               </button>
             </div>
           </div>
@@ -275,8 +236,9 @@ const CreateBlog = () => {
               <button
                 className="shadow bg-indigo-600 hover:bg-indigo-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
                 type="submit"
+                disabled={loading ? true : false}
               >
-                Create Post
+                {loading ? "Loading..." : "Create Post"}
               </button>
             </div>
           </div>

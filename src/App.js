@@ -15,8 +15,8 @@ function App() {
       <SnackbarProvider>
         <Navbar />
         <Routes>
-          <Route exact path="/home" element={<Home />} />
-          <Route exact path="/" element={<Register />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/create" element={<CreateBlog />} />
           <Route exact path="/detail/:id" element={<BlogDetail />} />
