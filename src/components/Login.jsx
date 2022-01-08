@@ -148,7 +148,7 @@ const Login = () => {
                   type="password"
                   name="password"
                   className="py-2 border-b-2 text-sm rounded-md pl-10 focus:outline-none w-10/12 focus:bg-white focus:text-gray-900"
-                  placeholder="Enter your Email Address"
+                  placeholder="Enter your password"
                   autoComplete="on"
                   {...register("password", {
                     required: true,
