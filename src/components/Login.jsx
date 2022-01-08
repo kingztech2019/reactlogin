@@ -179,7 +179,7 @@ const Login = () => {
                   {loading ? "Loading..." : "Login"}
                 </button>
                 <div className="text-center text-sm pt-1">
-                  Create an account? <Link to="/">Sign Up</Link>
+                  Create an account? <Link to="/register">Sign Up</Link>
                 </div>
               </div>
             </form>
